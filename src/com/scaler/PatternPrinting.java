@@ -12,8 +12,7 @@ public class PatternPrinting {
                 {
 
                 }
-                else
-                    result.add();
+                else                    result.add();
             }
 
         }
