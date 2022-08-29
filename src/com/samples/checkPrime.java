@@ -7,6 +7,7 @@ public class checkPrime {
         Scanner sc = new Scanner(System.in);
         int prime = sc.nextInt();
         System.out.println("Whether the given number is prime? " + isPrime(prime));
+        System.out.println("Whether the given number is prime? " + primeCheck(prime));
         sc.close();
     }
 
@@ -25,5 +26,19 @@ public class checkPrime {
             return true;
         }
         return false;
+    }
+
+    //A number is said to be prime if it has no factors from 2 to root N
+    public static boolean primeCheck(int N) {
+        if (N <= 1) {
+            return false;
+        }
+        //checking if any factors existing between 2 to root N
+        //Even if it contains one factor then return false because it is not prime
+        for (int i = 2; i * i <= N; i++) {
+            if (N % i == 0)
+                return false;
+        }
+        return true;
     }
 }
