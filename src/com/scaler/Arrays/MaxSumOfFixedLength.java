@@ -32,8 +32,9 @@ public class MaxSumOfFixedLength {
         }
         int max = sum;
         //Sliding window technique, TC:O(N)
-        for (int i = 1; i < N; i++) {
-            sum = sum + A[i] - A[i - 1];
+        for (int i = 1; i < N - K; i++) {
+            int j = i + K - 1;
+            sum = sum + A[j] - A[i - 1];
             if (max < sum) {
                 max = sum;
             }
@@ -51,8 +52,9 @@ public class MaxSumOfFixedLength {
         }
         int max = sum;
         //sliding window TC: O(N)
-        for (int i = 1; i < N; i++) {
-            sum = sum + A.get(i) - A.get(i - 1);
+        for (int i = 1; i < N - K; i++) {
+            int j = i + K - 1;
+            sum = sum + A.get(j) - A.get(i - 1);
             if (max < sum) {
                 max = sum;
             }
