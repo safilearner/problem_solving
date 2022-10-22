@@ -18,10 +18,7 @@ public class EvenOdd {
 
     // return true if the number is true
     public boolean findEvenorOdd(int A) {
-        if (A % 2 == 0) {
-            return true;
-        }
-        return false;
+        return A % 2 == 0;
     }
 
     // Using Bitwise Operators
@@ -30,9 +27,6 @@ public class EvenOdd {
     // vice versa
     // bitwise is little faster than modulo
     public boolean bitwiseCheckForEvenOrOdd(int A) {
-        if ((A & 1) == 0) {
-            return true;
-        }
-        return false;
+        return (A & 1) == 0;
     }
 }
