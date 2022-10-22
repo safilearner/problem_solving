@@ -126,6 +126,7 @@ public class EquilibriumIndex {
     // TODO: 10/16/2022
     // Scaler TA Solution
     //Need to understand this prefix solution
+    //O(N)TC and O(N) SC because of prefix array
     public int solve2(ArrayList<Integer> A) {
         int N = A.size();
         //Creating Prefix Sum from L-R
@@ -134,13 +135,21 @@ public class EquilibriumIndex {
         for (int i = 1; i < N; i++) {
             leftPrefixSum.add(i, leftPrefixSum.get(i - 1) + A.get(i));
         }
+        // Finding right sum, from 1 to N-1, if the sum is zero,then return zero
+        // because for index 0, sum on the left is considered 0 for equilibrium index
         if ((leftPrefixSum.get(N - 1) - leftPrefixSum.get(0)) == 0) {
             return 0;
         }
+        // If N - 2 is zero after performing prefix sum
+        // which will be equal to sum on the right side of N-1, so return N - 1
+        // Here we are doing left sum
         if (leftPrefixSum.get(N - 2) == 0) {
             return N - 1;
         }
+        //Iterating from i = 1, because to avoid edge case
         for (int i = 1; i < N - 1; i++) {
+            // To check equilibrium in a prefix sum, we can check the value of i-1th index and
+            // value of (N-1 - i) should be equal
             int sum_right = leftPrefixSum.get(N - 1) - leftPrefixSum.get(i);
             int sum_left = leftPrefixSum.get(i - 1);
             if (sum_right == sum_left) {
@@ -151,6 +160,8 @@ public class EquilibriumIndex {
     }
 
     //Another Solution
+    //Preferred
+    //O(N) TC and O(1) SC
     public int solve3(ArrayList<Integer> A) {
         int N = A.size();
         int sum = 0;
@@ -160,8 +171,9 @@ public class EquilibriumIndex {
             sum = sum + A.get(i);
         }
         for (int i = 0; i < N; i++) {
-            // Subtract the current element from sum,
+            // subtract the current element from sum,
             // so that we can check whether the index of current element is equilibrium index or not
+            // subtracting the current element will give the sum of previous element
             sum = sum - A.get(i);
             if (left_sum == sum) {
                 return i;
