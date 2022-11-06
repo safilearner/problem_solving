@@ -5,10 +5,10 @@ public class RightShiftCheckSetBit {
     public static void main(String[] args) {
         RightShiftCheckSetBit rightCheck = new RightShiftCheckSetBit();
         int a = 15;
-        int k = 3;
+        int k = 2;
         System.out.println(rightCheck.checkSetBitUsingRightShift(a, k));
-        int b = 15;
-        int i = 4;
+        int b = 40;
+        int i = 5;
         System.out.println(rightCheck.checkSetBitUsingRightShift(b, i));
     }
 
